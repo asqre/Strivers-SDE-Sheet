@@ -1,7 +1,7 @@
 ## 🔗 Question Link
 
-**Missing and Repeating Numbers**
-👉 [https://www.naukri.com/code360/problems/missing-and-repeating-numbers_873366](https://www.naukri.com/code360/problems/missing-and-repeating-numbers_873366)
+**Inversion Count**
+👉 [https://www.naukri.com/code360/problems/count-inversions_615](https://www.naukri.com/code360/problems/count-inversions_615)
 
 ---
 
