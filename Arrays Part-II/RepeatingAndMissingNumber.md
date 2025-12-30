@@ -1,3 +1,10 @@
+## 🔗 Question Link
+
+**Missing and Repeating Numbers**
+👉 [https://www.naukri.com/code360/problems/missing-and-repeating-numbers_873366](https://www.naukri.com/code360/problems/missing-and-repeating-numbers_873366)
+
+---
+
 # 📌 Problem
 Given an array of size `n` containing numbers from `1` to `n`:
 * **One number is missing**
