@@ -1,7 +1,7 @@
 /*
 ### ✅ **Approach: Median of Two Sorted Arrays (Binary Search – Optimal)**
 
-1. **Ensure binary search on smaller array**
+1. **Ensure binary search on smaller array for optimal time complexity**
 
    * If `nums1` is larger than `nums2`, swap them.
 
