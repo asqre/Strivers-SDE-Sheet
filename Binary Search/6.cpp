@@ -97,6 +97,26 @@
   * `low = max(0, k - n2)`
   * `high = min(k, n1)`
 
+    // to determine low and high
+    ask two question, 
+    a.what is the min element take from array 1.
+    b.what is the max element take from array 2.
+
+    ex: nums1 =   7, 12, 14, 15 ; n = 4
+                0  1   2   3   4  -> partition
+        nums2 = 1, 2, 3, 4, 9, 11; n = 6
+               0 1  2  3  4  5   6  -> partion of nums2 array
+
+    Two Case:- 
+    case 1: if k = 3
+        l = 0, h = 3 // we will take min 0 element from array1, and 3 element from array2.
+
+    case 2: if k = 7
+        l = 0 if we take 0 element from array1 , then i need to take 7 element from array 2, but it is not possible, coz, there is only 6 element in array 2.
+        hence, we have to take
+        l = k-n2 = 1 and h = min of k and n1.
+
+        
 **c. Validate partition**
 
 * Let:
