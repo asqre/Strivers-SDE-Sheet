@@ -1,75 +1,93 @@
-/*
-Method 1: Iterative
-Dummy node is used to simplify head handling.
-When one list becomes NULL, directly attach the remaining list:
-- If h1 == NULL → temp->next = h2
-- If h2 == NULL → temp->next = h1
-
-
-*/
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        // return solve1(list1, list2);
-        return solve2(list1, list2);
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        // return solve1(head, n);
+        // return solve2(head, n);
+        return solve3(head, n);
+    }
+private:
+    int len(ListNode* head){
+        if(head == NULL){
+            return 0;
+        }
+
+        return 1 + len(head -> next);
     }
 
-private:
-    ListNode* solve1(ListNode* h1, ListNode* h2){
-        if(h1  == NULL){
-            return h2;
-        }
+    ListNode* solve1(ListNode* head, int n){
+        int x = len(head);
+        if(x - n == 0) return head -> next;
 
-        if(h2  == NULL){
-            return h1;
-        }
+        int count = 0;
 
         ListNode* dummy = new ListNode(0);
+        dummy -> next = head;
         ListNode* temp = dummy;
 
-        while(h1 != NULL && h2 != NULL){
-            if(h1 -> val <= h2 -> val){
-                temp -> next = h1;
-                temp = h1;
-                h1 = h1 -> next;
-            }else{
-                temp -> next = h2;
-                temp = h2;
-                h2 = h2 -> next;
-            }
+        while(count < x - n){
+            temp = temp -> next;
+            count++;
         }
 
-        if(h1 != NULL){
-            temp -> next = h1;
-        }
-
-        if(h2 != NULL){
-            temp -> next = h2;
-        }
+        ListNode* temp2 = temp -> next;
+        temp -> next = temp -> next -> next;
+        delete temp2;
 
         return dummy -> next;
     }
 
-    ListNode* solve2(ListNode* h1, ListNode* h2){
-        if(h1 == NULL){
-            return h2;
+    ListNode* solve2(ListNode* head, int n){
+        ListNode* dummy = new ListNode(0);
+        dummy -> next = head;
+        ListNode* slow = dummy;
+        ListNode* fast = dummy;
+
+        int cnt = 0;
+
+        while(cnt <= n){
+            fast = fast -> next;
+            cnt++;
         }
 
-        if(h2 == NULL){
-            return h1;
+        while(fast != NULL){
+            fast = fast -> next;
+            slow = slow -> next;
         }
 
-        ListNode* finalHead = NULL;
+        slow -> next = slow -> next -> next;
 
-        if(h1 -> val <= h2 -> val){
-            h1 -> next = solve2(h1 -> next, h2);
-            finalHead = h1;
-        }else{
-            h2 -> next = solve2(h1, h2 -> next);
-            finalHead = h2;
+        return dummy -> next;
+    }
+
+    int cntNodeFromEnd(ListNode* &head, int n){
+        if(head == NULL){
+            return 0;
         }
 
-        return finalHead;
+        int cnt = cntNodeFromEnd(head -> next, n) + 1;
+
+        if(cnt == n){
+            ListNode* temp = head;
+            head = head->next;
+            delete temp;
+        }
+
+        return cnt;
+    }
+
+    ListNode* solve3(ListNode* head, int n){
+        int cnt = cntNodeFromEnd(head, n);
+        return head;
     }
 };
 
