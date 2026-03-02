@@ -16,6 +16,7 @@ public:
     }
 private:
     // Optimal Approach in O(m + n) without finding the length
+    // it will always travel only l1 + d(=l2-l1). ie, O(m + n) 
     ListNode* solve4(ListNode* h1, ListNode* h2){
         ListNode* t1 = h1;
         ListNode* t2 = h2;
