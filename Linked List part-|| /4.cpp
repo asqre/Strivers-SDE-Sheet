@@ -71,6 +71,7 @@ private:
         return compare(head, frontPtr);
     }
 
+    // we are using & because we want to update fp across recursive calls.
     bool compare(ListNode* head, ListNode* &fp){
         if(head == NULL){
             return true;
